@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- ACTION WINDOW FOR ACCOUNT.ACCOUNT.TEMPLATE -->
+  <record id="action_account_account_template" model="ir.actions.act_window">
+    <field name="name">Account Account Template</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.account.template</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <!-- ACTION WINDOW FOR ACCOUNT.ACCOUNT.TEMPLATE -->
+
+  <!-- MENU ACCOUNT.ACCOUNT.TEMPLATE -->
+  <menuitem
+      id="menu_account_account_template_tv"
+      name="Account Account Template"
+      action="action_account_account_template"
+      parent="account.account_account_menu"
+      sequence="30" />
+  <!-- MENU ACCOUNT.ACCOUNT.TEMPLATE -->
+  
+  <!-- FORMVIEW FOR ACCOUNT.ACCOUNT.TEMPLATE -->
+  <record id="form_view_account_account_template" model="ir.ui.view">
+    <field name="name">Account Account Template</field>
+    <field name="model">account.account.template</field>
+    <field name="arch" type="xml">
+      <form string="Account Account Template">
+        <sheet>
+          <group>
+            <group>
+              <field name="code" placeholder="code" />
+              <field name="name" />
+              <field name="reconcile" />
+              <field name="chart_template_id" />
+              <field name="user_type_id" widget="selection"/>
+              <field name="tax_ids" widget="many2many_tags" />
+              <field name="tag_ids" widget="many2many_tags" domain="[('applicability', '!=', 'taxes')]" context="{'default_applicability': 'accounts'}" options="{'no_create_edit': True}"/>
+              <field name="group_id"/>
+              <field name="currency_id" options="{'no_create': True}" groups="base.group_multi_currency"/>
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!-- FORMVIEW FOR ACCOUNT.ACCOUNT.TEMPLATE -->
+
+  <!-- TREE VIEW FOR ACCOUNT.ACCOUNT.TEMPLATE --> 
+  <record id="tree_view_account_account_template" model="ir.ui.view">
+    <field name="name">Account Account Template</field>
+    <field name="model">account.account.template</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="code"/>
+        <field name="name"/>
+        <field name="user_type_id" />
+      </tree>
+    </field>
+  </record>
+  <!-- TREE VIEW FOR ACCOUNT.ACCOUNT.TEMPLATE -->
+
+</odoo>

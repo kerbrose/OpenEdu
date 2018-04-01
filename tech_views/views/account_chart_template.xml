@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- ACTION WINDOW FOR ACCOUNT.CHART.TEMPALTE -->
+  <record id="action_account_chart_template" model="ir.actions.act_window">
+    <field name="name">Account Chart Template</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.chart.template</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <!-- ACTION WINDOW FOR ACCOUNT.CHART.TEMPALTE -->
+
+  <!-- MENU ACCOUNT.CHART.TEMPALTE -->
+  <menuitem
+      id="menu_account_chart_template_tv"
+      name="Account Chart Template"
+      action="action_account_chart_template"
+      parent="account.account_account_menu"
+      sequence="40" />
+  <!-- MENU ACCOUNT.CHART.TEMPALTE -->
+  
+  <!-- FORMVIEW FOR ACCOUNT.CHART.TEMPALTE -->
+  <record id="form_view_account_chart_template" model="ir.ui.view">
+    <field name="name">Account Chart Template</field>
+    <field name="model">account.chart.template</field>
+    <field name="arch" type="xml">
+      <form string="Account Chart Template">
+        <sheet>
+          <group>
+            <group>
+              <field name="name" />
+              <field name="currency_id" />
+              <field name="code_digits" />
+              <field name="use_anglo_saxon" />
+            </group>
+            <group>
+              <field name="visible" />
+              <field name="complete_tax_set" />
+              <field name="bank_account_code_prefix" />
+              <field name="cash_account_code_prefix" />
+            </group>
+          </group>
+          <group>
+            <field name="transfer_account_id" />
+            <field name="expense_currency_exchange_account_id" />
+            <field name="income_currency_exchange_account_id" />
+            <field name="property_account_expense_categ_id" />
+            <field name="property_account_expense_id" />
+            <field name="property_account_income_categ_id" />
+            <field name="property_account_income_id" />
+            <field name="property_account_payable_id" />
+            <field name="property_account_receivable_id" />
+            <field name="property_stock_account_input_categ_id" />
+            <field name="property_stock_account_output_categ_id" />
+            <field name="property_stock_valuation_account_id" />
+          </group>
+          <group>
+            <field name="parent_id" />
+          </group>
+          <group>
+            <field name="account_ids" />
+            <field name="tax_template_ids" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!-- FORMVIEW FOR ACCOUNT.CHART.TEMPALTE -->
+
+  <!-- TREE VIEW FOR ACCOUNT.CHART.TEMPALTE --> 
+  <record id="tree_view_account_chart_template" model="ir.ui.view">
+    <field name="name">Account Chart Template</field>
+    <field name="model">account.chart.template</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="visible"/>
+      </tree>
+    </field>
+  </record>
+  <!-- TREE VIEW FOR ACCOUNT.CHART.TEMPALTE -->
+
+</odoo>

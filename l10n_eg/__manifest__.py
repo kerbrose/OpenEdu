@@ -2,7 +2,7 @@
 {
     'name': 'EGYPT - Generic Accounting',
     'author': 'Core BPO',
-    'website': 'http://www.core-bpo.com',
+    'website': 'https://www.core-bpo.com',
     'category': 'Localization',
     'description': """
 Arab Republic of Egypt accounting chart and localization.

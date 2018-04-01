@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- ACTION WINDOW FOR ACCOUNT.TAX.GROUP -->
+  <record id="action_account_tax_group" model="ir.actions.act_window">
+    <field name="name">Account Tax Group</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">account.tax.group</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <!-- ACTION WINDOW FOR ACCOUNT.TAX.GROUP -->
+
+  <!-- MENU ACCOUNT.TAX.GROUP -->
+  <menuitem
+      id="menu_account_tax_group_tv"
+      name="Account Tax Group"
+      action="action_account_tax_group"
+      parent="account.account_account_menu"
+      sequence="60" />
+  <!-- MENU ACCOUNT.TAX.GROUP -->
+  
+  <!-- FORMVIEW FOR ACCOUNT.TAX.GROUP -->
+  <record id="form_view_account_tax_group" model="ir.ui.view">
+    <field name="name">Account Tax Group</field>
+    <field name="model">account.tax.group</field>
+    <field name="arch" type="xml">
+      <form string="Account Tax Group">
+        <sheet>
+          <group>
+            <group>
+              <field name="name" />
+            </group>
+            <group>
+              <field name="sequence" />
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <!-- FORMVIEW FOR ACCOUNT.TAX.GROUP -->
+
+  <!-- TREE VIEW FOR ACCOUNT.TAX.GROUP --> 
+  <record id="tree_view_account_tax_group" model="ir.ui.view">
+    <field name="name">Account Tax Group</field>
+    <field name="model">account.tax.group</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="sequence"/>
+      </tree>
+    </field>
+  </record>
+  <!-- TREE VIEW FOR ACCOUNT.TAX.GROUP -->
+
+</odoo>
