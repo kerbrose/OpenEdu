@@ -15,7 +15,11 @@ class OeParent(models.Model):
 
     _inherits = {'res.partner': 'partner_id'}
 
-    partner_id = fields.Many2one('res.partner', 'Partner', required=True, ondelete="restrict")
+    id_number = fields.Char('ID Number')
+    
+    id_type = fields.Selection([('personal_id', 'Personal ID'), ('passport', 'Passport')], string='ID Type')
+
+    partner_id = fields.Many2one('res.partner', 'Partner', required=True, ondelete='restrict')
     
     #student_ids = fields.Many2many('op.student', string='Student(s)')
     
