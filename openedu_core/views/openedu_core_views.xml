@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- MAIN MENU OPENEDU -->
+    <menuitem  name="OpenEdu"
+               id="menu_openedu_core"
+               web_icon="OpenEdu,static/description/icon.png"
+               groups="openedu_core.group_student_affair,openedu_core.group_senior_student_affair"
+               />
+    <!-- MAIN MENU OPENEDU -->
+
+    <!-- SUB MENU PARTNERS DIRECTORY -->
+    <menuitem name="Parent Directory" 
+              id="menu_parent_directory" 
+              parent="menu_openedu_core"
+              sequence="1"
+              />
+    <!-- SUB MENU PARTNERS DIRECTORY -->
+
+  </data>
+</odoo>

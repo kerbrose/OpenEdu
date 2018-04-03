@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oe_parent_student_affair,oe.parent,model_oe_parent,group_student_affair,1,0,0,0
+access_oe_parent_senior_student_affair,oe.parent,model_oe_parent,group_senior_student_affair,1,1,1,0
+access_oe_parent_manager_student_affair,oe.parent,model_oe_parent,group_manager_student_affair,1,1,1,1
