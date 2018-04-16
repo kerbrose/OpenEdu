@@ -17,6 +17,7 @@ This module include the definition of third party partners that will be in an ed
              'security/openedu_groups.xml',
              'security/ir.model.access.csv',
              'views/openedu_core_views.xml',
-             'views/oe_parent.xml',  
+             'views/oe_parent.xml',
+             'views/oe_student.xml',
     ],
 }

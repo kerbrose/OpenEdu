@@ -2,43 +2,109 @@
 <odoo>
   <data>
 
-    <!-- FILTERS FOR OE.PARENT -->
-    <record id="view_oe_parent_filter" model="ir.ui.view">
-      <field name="name">oe.parent.select</field>
-      <field name="model">oe.parent</field>
+    <!-- FILTERS FOR OE.STUDENT -->
+    <record id="view_oe_student_filter" model="ir.ui.view">
+      <field name="name">oe.student.select</field>
+      <field name="model">oe.student</field>
       <field name="arch" type="xml">
-        <search string="Search Parents">
+        <search string="Search Students">
           <field name="name" string="Reference"
-                 filter_domain="['|', ('name','=',self), ('ref','ilike',self)]"/>
+                 filter_domain="['|', '|', ('name','=',self), ('ref','ilike',self), ('id_number', 'ilike', 'self')]"/>
           <field name="mobile" />
           <field name="phone" />
         </search>
       </field>
     </record>
-    <!-- FILTERS FOR OE.PARENT -->
+    <!-- FILTERS FOR OE.STUDENT -->
 
-    <!-- ACTION WINDOW FOR OE.PARENT -->
-    <record id="action_oe_parent" model="ir.actions.act_window">
-      <field name="name">Parents</field>
+    <!-- ACTION WINDOW FOR OE.STUDENT -->
+    <record id="action_oe_student" model="ir.actions.act_window">
+      <field name="name">Students</field>
       <field name="type">ir.actions.act_window</field>
-      <field name="res_model">oe.parent</field>
+      <field name="res_model">oe.student</field>
       <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
       <field name="search_view_id" ref="view_oe_parent_filter"/>
     </record>
-    <!-- ACTION WINDOW FOR OE.PARENT -->
+    <!-- ACTION WINDOW FOR OE.STUDENT -->
 
-    <!-- MENU PARENTS -->
-    <menuitem
-        id="menu_oe_parent"
-        name="Parents"
-        action="action_oe_parent"
-        parent="openedu_core.menu_parent_directory"
-        sequence="200" />
-    <!-- MENU PARENTS -->
+    <!-- KANBAN VIEW FOR OE.STUDENT -->
+    <record id="view_kanban_oe_student" model="ir.ui.view">
+      <field name="name">Kanban OE Student</field>
+      <field name="model">oe.student</field>
+      <field name="arch" type="xml">
+        <kanban class="o_res_partner_kanban">
+          <field name="id"/>
+          <field name="image"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div t-attf-class="oe_kanban_global_click o_res_partner_kanban">
+                <div class="o_kanban_image">
+                  <t t-if="record.image.value">
+                    <img t-att-src="kanban_image('oe.student', 'image', record.id.value)"/>
+                  </t>
+                  <t t-if="!record.image.value">
+                    <img t-att-src='_s + "/base/static/src/img/avatar.png"'/>
+                  </t>
+                </div>
+                <div class="oe_kanban_details">
+                  <h4>
+                    <a type="open">
+                      <field name="name"/>
+                    </a>
+                  </h4>
+                  <ul>
+                    <li t-if="record.contact_address.raw_value">
+                      Address:
+                      <field name="contact_address"/>
+                    </li>
+                    <li t-if="record.phone.raw_value">
+                      Tel:
+                      <field name="phone"/>
+                    </li>
+                    <li t-if="record.mobile.raw_value">
+                      Mobile:
+                      <field name="mobile"/>
+                    </li>
+                    <li t-if="record.email.raw_value">
+                      <a t-attf-href="mailto:#{record.email.value}">
+                        <field name="email"/>
+                      </a>
+                    </li>
+                    <li t-if="record.lang.raw_value">
+                      Language:
+                      <field name="lang"/>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+    <!-- KANBAN VIEW FOR OE.STUDENT -->
+    
+    <!-- TREE VIEW FOR OE.STUDENT -->
+    <record id="view_tree_oe_student" model="ir.ui.view">
+      <field name="name">TREE OE STUDENT</field>
+      <field name="model">oe.student</field>
+      <field name="priority" eval="8"/>
+      <field name="arch" type="xml">
+        <tree string="Student">
+          <field name="title"/>
+          <field name="name"/>
+          <field name="blood_group"/>
+          <field name="emergency_contact"/>
+          <field name="nationality"/>
+          <field name="lang"/>
+        </tree>
+      </field>
+    </record>
+    <!-- TREE VIEW FOR OE.STUDENT -->
   
-    <!-- FORM VIEW OE.PARENT -->
-    <record id="view_form_oe_parent" model="ir.ui.view">
+    <!-- FORM VIEW OE.STUDEN -->
+    <record id="view_form_oe_student" model="ir.ui.view">
       <field name="name">OE Parent</field>
       <field name="model">oe.parent</field>
       <field name="priority" eval="1"/>
@@ -72,8 +138,6 @@
                     <field name="zip" placeholder="ZIP" class="o_address_zip" />
                     <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' />
                   </div>
-                  <field name="id_type" />
-                  <field name="id_number" placeholder="e.g. 20477472701631" attrs="{'required' : ['|', ('id_type', '=', 'personal_id'), ('id_type', '=', 'passport')], 'invisible':[('id_type', '=', False)]}"/>
                   <field name="vat" placeholder="e.g. BE0477472701"/>
                   <field name="category_id" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags..."/>
               </group>
@@ -214,7 +278,37 @@
         </form>
       </field>
     </record>
-    <!-- FORM VIEW OE.PARENT -->
+    <!-- FORM VIEW OE.STUDEN -->
+
+    <!-- ACTION WINDOW VIEW FOR OE.STUDENT -->
+    <record model="ir.actions.act_window.view" id="action_oe_student_view_kanban">
+      <field name="act_window_id" ref="action_oe_student"/>
+      <field name="sequence" eval="10"/>
+      <field name="view_mode">kanban</field>
+      <field name="view_id" ref="view_kanban_oe_student"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_oe_student_view_tree">
+      <field name="act_window_id" ref="action_oe_student"/>
+      <field name="sequence" eval="20"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_tree_oe_student"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_oe_student_form">
+      <field name="act_window_id" ref="action_oe_student"/>
+      <field name="sequence" eval="30"/>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_form_oe_student"/>
+    </record>
+    <!-- ACTION WINDOW VIEW FOR OE.STUDENT -->
+
+    <!-- MENU PARENTS -->
+    <menuitem
+        id="menu_oe_student"
+        name="Students"
+        action="action_oe_student"
+        parent="openedu_core.menu_parent_directory"
+        sequence="100" />
+    <!-- MENU PARENTS -->
 
   </data>
 </odoo>
