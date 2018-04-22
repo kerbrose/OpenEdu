@@ -16,7 +16,7 @@
       <field name="category_id" ref="base.module_category_specific_industry_applications" />
       <field name="implied_ids" eval="[(4, ref('openedu_core.group_student_affair'))]" />
     </record>
-    <!-- GROUP STUDENT AFFAIR -->
+    <!-- GROUP SENIOR STUDENT AFFAIR -->
 
     <!-- GROUP MANAGER STUDENT AFFAIR-->
     <record id="group_manager_student_affair" model="res.groups">

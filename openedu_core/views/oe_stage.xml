@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- ACTION WINDOW FOR OE.STAGE -->
+    <record id="action_oe_stage" model="ir.actions.act_window">
+      <field name="name">Stages</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">oe.stage</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- ACTION WINDOW FOR OE.STAGE -->
+
+    <!-- TREE VIEW FOR OE.STAGE -->
+    <record id="view_tree_oe_stage" model="ir.ui.view">
+      <field name="name">TREE OE STAGE</field>
+      <field name="model">oe.stage</field>
+      <field name="priority" eval="10"/>
+      <field name="arch" type="xml">
+        <tree string="Stage">
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+    <!-- TREE VIEW FOR OE.STAGE -->
+  
+    <!-- FORM VIEW OE.STAGE -->
+    <record id="view_form_oe_stage" model="ir.ui.view">
+      <field name="name">OE Stage</field>
+      <field name="model">oe.stage</field>
+      <field name="priority" eval="1"/>
+      <field name="arch" type="xml">
+        <form string="Stage">
+          <sheet>
+            <group>
+              <field name="name" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- FORM VIEW OE.STAGE -->
+
+    <!-- ACTION WINDOW VIEW FOR OE.STAGE -->
+    <record model="ir.actions.act_window.view" id="action_oe_stage_view_tree">
+      <field name="act_window_id" ref="action_oe_stage"/>
+      <field name="sequence" eval="20"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_tree_oe_stage"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_oe_stage_view_form">
+      <field name="act_window_id" ref="action_oe_stage"/>
+      <field name="sequence" eval="30"/>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_form_oe_stage"/>
+    </record>
+    <!-- ACTION WINDOW VIEW FOR OE.STAGE -->
+
+    <!-- MENU STAGE -->
+    <menuitem
+        id="menu_oe_stage"
+        name="Educational Stages"
+        action="action_oe_stage"
+        parent="openedu_core.menu_openedu_configuration"
+        sequence="100" />
+    <!-- MENU STAGE -->
+
+  </data>
+</odoo>

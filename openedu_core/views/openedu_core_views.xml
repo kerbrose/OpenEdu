@@ -18,5 +18,14 @@
               />
     <!-- SUB MENU PARTNERS DIRECTORY -->
 
+    <!-- SUB MENU CONFIGURATION DIRECTORY -->
+    <menuitem name="Configuration" 
+              id="menu_openedu_configuration" 
+              parent="menu_openedu_core"
+              groups="openedu_core.group_manager_student_affair"
+              sequence="1000"
+              />
+    <!-- SUB MENU CONFIGURATION DIRECTORY -->
+
   </data>
 </odoo>

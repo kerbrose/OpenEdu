@@ -4,11 +4,19 @@
 #    Core≡BPO Pvt. Ltd.
 #    Copyright (C) 2009-TODAY Core≡BPO(<http://www.http://core-bpo.com/>).
 #
-#
 ###############################################################################
 
-from . import res_partner
-from . import oe_parent
-from . import oe_stage
-from . import oe_student
+from odoo import models, fields, api, _
+from odoo.exceptions import Warning
 
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    is_faculty = fields.Boolean('Faculty')
+
+    is_parent = fields.Boolean('Parent')
+
+    is_student = fields.Boolean('Student')
+    
+    
